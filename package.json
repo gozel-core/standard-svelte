@@ -1,0 +1,80 @@
+{
+  "name": "@gozel-core/standard-svelte",
+  "version": "0.1.0",
+  "description": "",
+  "repository": "https://github.com/gozel-core/standard-svelte.git",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "require": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    },
+    "import": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "lint": "eslint src",
+    "format:check": "prettier src --check",
+    "format": "prettier $(git diff --cached --name-only --diff-filter=ACMR src | sed 's| |\\\\ |g') --write --ignore-unknown",
+    "test": "vitest",
+    "build": "pkgroll --target=es2020 --target=node16.20 --sourcemap --clean-dist",
+    "prepare": "husky || true",
+    "commit": "cz"
+  },
+  "files": [
+    ".npmrc",
+    "dist/*",
+    "package.json"
+  ],
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "engines": {
+    "node": ">=20.x",
+    "pnpm": ">=8.x"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@directus/sdk": "^18.0.0",
+    "@eslint/js": "^9.10.0",
+    "@types/node": "^22.5.4",
+    "bowser": "^2.11.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.10.0",
+    "esm-env": "^1.1.4",
+    "globals": "^15.9.0",
+    "husky": "^9.1.5",
+    "nanoid": "^5.0.8",
+    "pkgroll": "^2.1.1",
+    "prettier": "3.3.3",
+    "regexparam": "^3.0.0",
+    "regionist": "^6.1.0",
+    "semantic-release": "24.1.0",
+    "svelte": "^5.2.0",
+    "svelte-i18n": "^4.0.1",
+    "typescript": "^5.5.2",
+    "typescript-eslint": "^8.4.0",
+    "vite": "^5.4.10",
+    "vitest": "^1.6.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "peerDependencies": {
+    "@directus/sdk": "^18.0.0",
+    "bowser": "^2.11.0",
+    "esm-env": "^1.1.4",
+    "nanoid": "^5.0.8",
+    "regexparam": "^3.0.0",
+    "regionist": "^6.1.0",
+    "svelte": "^5.2.0",
+    "svelte-i18n": "^4.0.1"
+  }
+}
